@@ -17,20 +17,23 @@ find_package(glfw3 REQUIRED)
 ######################################################
 
 # Add submodules
-add_subdirectory(src/pch)
-add_subdirectory(src/window)
-add_subdirectory(src/first_app)
-add_subdirectory(src/pipeline)
-add_subdirectory(src/device)
-add_subdirectory(src/swap_chain)
 add_subdirectory(shaders)
 
+add_subdirectory(src/device)
+add_subdirectory(src/first_app)
+add_subdirectory(src/model)
+add_subdirectory(src/pch)
+add_subdirectory(src/pipeline)
+add_subdirectory(src/swap_chain)
+add_subdirectory(src/window)
+
 # Main executable
-add_executable(${PROJECT_NAME} src/main.cpp "src/first_app/first_app.cpp" "src/pipeline/lve_pipeline.cpp")
+add_executable(${PROJECT_NAME} src/main.cpp "src/first_app/first_app.cpp" "src/pipeline/lve_pipeline.cpp" "src/model/lve_model.cpp")
 
 # Link internal libraries
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
+    lve_model
     lve_swap_chain
     lve_device
     lve_pipeline
